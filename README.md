@@ -6,8 +6,6 @@
 
 📊 **Classification**: 10 categories → 8-cell (A, B, C), Morula (A, B, C), Blastocyst (A, B, C), and Error images.
 
-🎯 **Objective**: Improve ART (Assisted Reproductive Technology) success rates and cut treatment costs for families.
-
 ---
 
 ## 🏥 1. Business Problem
@@ -65,6 +63,62 @@
   - **Error Images**: 1,000 images  
   - **Augmented Images**: Additional images created through augmentation techniques  
 
+
+---
+
+### 🔍 4. Exploratory Data Analysis
+
+**Before Data Preprocessing**  
+
+1. **Image Count & Class Distribution**  
+   - Check the number of images per class to ensure a balanced dataset.
+
+2. **Random Image Visualization**  
+   - Visualize random images from each class to understand the dataset's characteristics.
+
+3. **Image Shape / Size / Channels Check**  
+   - Ensure all images have consistent dimensions and check the number of channels (RGB or grayscale).
+
+4. **File Format Check**  
+   - Verify all images are in the correct format (e.g., .jpg, .png).
+
+5. **Missing / Corrupt / Blank Images**  
+   - Identify and handle missing, corrupt, or blank images to prevent errors during model training.
+
+
+## 👍 5. Data Preprocessing
+
+**Image Collection** ✅
+
+- Collect all images into one folder and assign clear, correct labels for each image. Make sure everything is well-organized ✅🗂️🧠
+
+  **Example labels:**  
+  - 8-cell Grade A, 8-cell Grade B, 8-cell Grade C,  
+  - Morula Grade A, Morula Grade B, Morula Grade C,  
+  - Blastocyst Grade A, Blastocyst Grade B, Blastocyst Grade C,  
+  - Error Images  
+
+---
+
+**Standard Format: .png**  
+
+- I am using the standard .png format because this project is medical-related. I chose .png since it ensures no data loss, which is important for accuracy. 🧠🩺🖼️  
+
+  - **No quality loss** (PNG format is lossless, so image details stay intact)  
+  - **Better for analysis** (Clear images help AI/ML models work better)  
+  - **Trusted in healthcare** (Many hospitals use PNG for accurate visuals)  
+
+---
+
+**Image Preprocessing Steps:**
+
+- **Resize**  
+- **Convert RGB 👉 Grayscale**  
+- **Reshape** (already done)  
+- **Data Augmentation**  
+- **Convert to array**  
+- **Normalization**  
+- **Split Data** (train, test)  
 
 ---
 
