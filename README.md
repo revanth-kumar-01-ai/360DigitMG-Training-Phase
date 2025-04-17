@@ -118,7 +118,7 @@
 - **Data Augmentation**  
 - **Convert to array**  
 - **Normalization**  
-- **Split Data** (train, test)  
+- **Split Data** -> train and test
 
 ---
 
