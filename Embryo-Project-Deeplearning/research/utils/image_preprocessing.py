@@ -111,15 +111,4 @@ class ImagePrePreprocessingData:
         plt.show()
     
     # Plot settings
-    def RadomVisual(indices):
-        # 📊 Plot settings
-        plt.figure(figsize=(15, 6))
-
-        for i, idx in enumerate(indices):
-            plt.subplot(2, 5, i + 1)  # 2 rows, 5 columns
-            plt.imshow(X[idx].squeeze(), cmap='gray')
-            plt.title(f"Label: {y[idx]}")
-            plt.axis('off')
-
-        plt.tight_layout()
-        plt.show()
+    
