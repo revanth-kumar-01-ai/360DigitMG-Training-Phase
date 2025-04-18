@@ -118,6 +118,7 @@
 - **Data Augmentation**  
 - **Convert to array**  
 - **Normalization**  
+- **Check duplicate value and remove it**  
 - **Split Data** -> train and test
 
 ---
