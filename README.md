@@ -89,7 +89,7 @@
 
 ## 📑 Insights & Final Thoughts
 
-### 🔢 Step 1: Image Count & Class Distribution
+### 🔢 ✌️ 1: Image Count & Class Distribution
 
 #### 🧫 8-cell Dataset (510 images):  
 - Grade A: 190  
@@ -111,19 +111,19 @@
 
 ---
 
-### 🎲 Step 2: Random Image Visualization
+### 🎲 ✌️  2: Random Image Visualization
 - Showed **5 random images** per grade (A, B, C)  
 - Also viewed **5 error images** to check for issues 🧐
 
 ---
 
-### 📐 Step 3: Image Shape / Size / Channels
+### 📐 ✌️  3: Image Shape / Size / Channels
 - ❌ Images have **different sizes**  
 - ✅ All images are **RGB (3 channels)** — colored 🎨
 
 ---
 
-### 🖼️ Step 4: File Format Check
+### 🖼️ ✌️  4: File Format Check
 
 - **8-cell & Morula**: Only `.jpg` format ✅  
 - **Blastocyst**: Mix of `.png`, `.jpeg`, and `.jpg` 🌀  
@@ -131,7 +131,7 @@
 
 ---
 
-### 🚫 Step 5: Missing / Corrupt / Blank Images
+### 🚫 ✌️  5: Missing / Corrupt / Blank Images
 
 - ✅ No **missing**, **corrupt**, or **blank** images found — all clear 🎉
 
@@ -140,7 +140,7 @@
 
 --- 
 
-# ⚙️ 5. Data Preprocessing
+# ⚙️ Step 5. Data Preprocessing
 
 ## ❓ Why Data Preprocessing?
 
@@ -185,7 +185,7 @@ We handle:
 
 
 
-# 🚀 6 Model Training adn Evaluation accuarcy
+# 🚀 Step 6: Model Training adn Evaluation accuarcy
 I used six types of deep learning algorithms 🤖🔥
 
 | 🏷️ Model Name               | 🎯 Train Accuracy | 🧪 Test Accuracy | 🏆 Ranking    |
