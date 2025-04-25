@@ -66,74 +66,189 @@
 
 ---
 
-### 🔍 4. Exploratory Data Analysis
+# 🔍 Step 4: Exploratory Data Analysis (EDA)
 
-**Before Data Preprocessing**  
+## 📊 Before Data Preprocessing
 
-1. **Image Count & Class Distribution**  
-   - Check the number of images per class to ensure a balanced dataset.
+### 1️⃣ Image Count & Class Distribution  
+- Check number of images in each class to ensure balance ⚖️
 
-2. **Random Image Visualization**  
-   - Visualize random images from each class to understand the dataset's characteristics.
+### 2️⃣ Random Image Visualization  
+- View random images from each class to understand visual differences 👀🖼️
 
-3. **Image Shape / Size / Channels Check**  
-   - Ensure all images have consistent dimensions and check the number of channels (RGB or grayscale).
+### 3️⃣ Image Shape / Size / Channels Check  
+- Make sure all images have the same size and check if they are RGB or grayscale 🎨📏
 
-4. **File Format Check**  
-   - Verify all images are in the correct format (e.g., .jpg, .png).
+### 4️⃣ File Format Check  
+- Confirm file extensions are valid (e.g., `.jpg`, `.png`, `.jpeg`) 📂✅
 
-5. **Missing / Corrupt / Blank Images**  
-   - Identify and handle missing, corrupt, or blank images to prevent errors during model training.
-
-
-## 👍 5. Data Preprocessing
-
-**Image Collection** ✅
-
-- Collect all images into one folder and assign clear, correct labels for each image. Make sure everything is well-organized ✅🗂️🧠
-
-  **Example labels:**  
-  - 8-cell Grade A, 8-cell Grade B, 8-cell Grade C,  
-  - Morula Grade A, Morula Grade B, Morula Grade C,  
-  - Blastocyst Grade A, Blastocyst Grade B, Blastocyst Grade C,  
-  - Error Images  
+### 5️⃣ Missing / Corrupt / Blank Images  
+- Find and fix broken, missing, or blank images to avoid issues during training 🛠️🚫
 
 ---
 
-**Standard Format: .png**  
+## 📑 Insights & Final Thoughts
 
-- I am using the standard .png format because this project is medical-related. I chose .png since it ensures no data loss, which is important for accuracy. 🧠🩺🖼️  
+### 🔢 Step 1: Image Count & Class Distribution
 
-  - **No quality loss** (PNG format is lossless, so image details stay intact)  
-  - **Better for analysis** (Clear images help AI/ML models work better)  
-  - **Trusted in healthcare** (Many hospitals use PNG for accurate visuals)  
+#### 🧫 8-cell Dataset (510 images):  
+- Grade A: 190  
+- Grade B: 179  
+- Grade C: 150  
+- ✅ **Balanced** dataset — future **augmentation** planned.
+
+#### 🧬 Morula Dataset (434 images):  
+- Grade A: 190  
+- Grade B: 179  
+- Grade C: 150  
+- ✅ **Balanced** — augmentation to be applied later.
+
+#### 🧪 Blastocyst Dataset (450 images):  
+- Grade A: 148  
+- Grade B: 152  
+- Grade C: 150  
+- ✅ Mostly **balanced** — slight difference in class sizes.
 
 ---
 
-**Image Preprocessing Steps:**
-
-- **Resize**  
-- **Convert RGB 👉 Grayscale**  
-- **Reshape** (already done)  
-- **Data Augmentation**  
-- **Convert to array**  
-- **Normalization**  
-- **Check duplicate value and remove it**  
-- **Split Data** -> train and test
+### 🎲 Step 2: Random Image Visualization
+- Showed **5 random images** per grade (A, B, C)  
+- Also viewed **5 error images** to check for issues 🧐
 
 ---
+
+### 📐 Step 3: Image Shape / Size / Channels
+- ❌ Images have **different sizes**  
+- ✅ All images are **RGB (3 channels)** — colored 🎨
+
+---
+
+### 🖼️ Step 4: File Format Check
+
+- **8-cell & Morula**: Only `.jpg` format ✅  
+- **Blastocyst**: Mix of `.png`, `.jpeg`, and `.jpg` 🌀  
+- **Error Images**: Mix of `.png` and `.jpg` ⚠️
+
+---
+
+### 🚫 Step 5: Missing / Corrupt / Blank Images
+
+- ✅ No **missing**, **corrupt**, or **blank** images found — all clear 🎉
+
+
+> 🧠 **Insight**: Datasets are mostly clean and balanced, but image resizing + format unification needed before training 📦🧼
+
+--- 
+
+# ⚙️ 5. Data Preprocessing
+
+## ❓ Why Data Preprocessing?
+
+Before building any **ML/DL model**, you must clean your data 🧹🧠  
+It boosts model performance, avoids errors, and helps create a **generalized** model ✅💡  
+
+We handle:  
+- Missing values 🚫  
+- Outliers ⚠️  
+- Scaling & transformations 📏  
+- And other clean-up tasks 🧽  
+
+---
+
+## 🖼️ Image Preprocessing Steps:
+
+- 📄 **Standard Format**: Convert all to `.jpg`  
+- 🔍 **Resize**: Make image size consistent  
+- 🌈 **Convert to RGB**: Ensure 3-channel color images  
+- 🔁 **Reshape**: Already done ✅  
+- 🎨 **Data Augmentation**: Add variation to improve learning  
+- 🔢 **Convert to Array**: For feeding into the model
+
+---
+
+## 🧼 Image Cleaning Process:
+
+### 🗑️ Remove:
+- ❌ Blank images  
+- ❌ Duplicate images  
+- ❌ Corrupted files  
+- 🧹 **Check for duplicates and remove them**  
+
+---
+
+## 🧪 Data Splitting
+
+- 🔀 Split into **Train (90%)** and **Test (10%)** sets  
+- 🗂️ Save images into respective folders: `train/` and `test/`  
+
+---
+
+
+
+# 🚀 6 Model Training adn Evaluation accuarcy
+I used six types of deep learning algorithms 🤖🔥
+
+| 🏷️ Model Name               | 🎯 Train Accuracy | 🧪 Test Accuracy | 🏆 Ranking    |
+|------------------------------|-------------------|------------------|--------------|
+| 🐉 efficientvit_b2r288_in1k   | 0.9926             | 0.9572           | Champion 🏆  |
+| 🧬 ConvNeXtBase                | 0.9943             | 0.9435           | Challenger 🥇 |
+| 🌀 swinv2_base_window12_192   | 0.9790             | 0.9311           | Contender ⚔ |
+| 🌿 EfficientNetB7              | 0.9797             | 0.9240           | Leader 🚀     |
+| 🏔️ ResNet152                  | 0.9821             | 0.8926           | Top Dog 🐶   |
+| 🏗️ DenseNet201                 | 0.9329             | 0.7742           | Veteran 💼   |
+
+---
+
+### 🔥 Track Model Performance in MLflow
+
+I track my model's performance in MLflow, which allows for easy comparison of different experiments and results.
+
+[![Go to MLflow Experiment](https://img.shields.io/badge/Go%20to%20MLflow-Experiment-blue?style=for-the-badge)](https://dagshub.com/revanth-kumar-01-ai/360DigitMG-Training-Phase.mlflow/#/experiments/0?viewStateShareKey=80da10b99d9a7a97b045e3282371ab20a2b0b34bc77056434eaf5bd3b6d771c6&compareRunsMode=TABLE)
+
+## 7. Deployment 🚀
+
+I am deploying the model using a **Streamlit app**. Streamlit provides an easy way to deploy and showcase machine learning models in an interactive and user-friendly web interface.
+
+### To deploy the app:
+
+1. **Install the required libraries**:
+    First, clone the repository to your local machine:
+    ```bash
+    git clone https://github.com/revanth-kumar-01-ai/360DigitMG-Training-Phase.git
+    ```
+
+    Then, install all the required libraries from the `requirements.txt` file:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+2. **Run the Streamlit app**:
+    After installing the required libraries, run the Streamlit app using the following command:
+    ```bash
+    streamlit run your_app.py
+    ```
+
+3. **Access the app**:
+    Once the app is running, it will be live on your local server and accessible at `http://localhost:8501`.
+
+### Download the Code 📝
+
+You can download the project code by cloning the repository:
+
+```bash
+git clone https://github.com/revanth-kumar-01-ai/360DigitMG-Training-Phase.git
+
 
 ## 💻 Code Workflow
 
 1. 🔧 Update `config.yaml`  
-2. 🔧 Update `schema.yaml`  
-3. 🔧 Update `params.yaml`  
-4. 🧱 Update entity  
-5. ⚙️ Update config manager in `src/config`  
-6. 🧩 Update components  
-7. 🧪 Update pipeline  
-8. 🚀 Update `main.py`  
-9. 🌐 Update `app.py`  
+2. 🔧 Update `params.yaml`  
+3. 🧱 Update entity  
+4. ⚙️ Update config manager in `src/config`  
+5. 🧩 Update components  
+6. 🧪 Update pipeline  
+7. 🚀 Update `main.py`  
+8. 🌐 Update `app.py`  
 
 
 

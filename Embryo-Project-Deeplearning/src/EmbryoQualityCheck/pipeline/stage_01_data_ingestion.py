@@ -15,6 +15,7 @@ class DataIngestionTrainingPipeline:
         data_ingestion = DataIngestion(config=data_ingestion_config)
         data_ingestion.download_file()
         data_ingestion.extract_zip_file()
+        data_ingestion.masterFolder()
 
 
 if __name__ == '__main__':
@@ -22,7 +23,7 @@ if __name__ == '__main__':
         logger.info(f'>>>>>>>>>>> stage {STAGE_NAME} started <<<<<<<<<<')
         obj = DataIngestionTrainingPipeline()
         obj.main()
-        logger.info(f'>>>>>>>>>>> stage {STAGE_NAME} Completer <<<<<<<<<<')
+        logger.info(f'>>>>>>>>>>> stage {STAGE_NAME} Complete <<<<<<<<<<')
     except Exception as e:
         logger.exception(e)
         raise e

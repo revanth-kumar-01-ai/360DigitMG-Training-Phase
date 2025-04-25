@@ -1,20 +1,23 @@
-tensorflow==2.10.1
-pandas
-gdown
+albumentations
 dvc
-mlfow==2.2.2
+ensure==1.0.2
+Flask
+Flask-Cors
+gdown
+joblib
+matplotlib
+mlfow
 notebook
-numpy 
-matplotlib 
-seaborn 
+numpy
+opencv-python
+pandas
+Pillow
 python-box==6.0.2
 pyYAML
-tqdm
-ensure==1.0.2
-joblib 
-types-pyYAML 
 scipy
-Flask 
-Flask-Cors
+seaborn
+tensorflow==2.10.1
+tqdm
+types-pyYAML
 
 -e .

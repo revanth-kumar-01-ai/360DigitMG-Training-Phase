@@ -1,5 +1,5 @@
 # import necessary libraries 
-import os
+import os, math
 import pandas as pd
 import numpy as np
 
@@ -14,10 +14,17 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator, load_img, a
 import random
 
 # Pillow
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 
 # math
 import math
+
+# openCV lib for image processing 
+import cv2
+
+# hash table lib
+import hashlib
+
 
 
 class ImagePrePreprocessingData:
@@ -45,50 +52,6 @@ class ImagePrePreprocessingData:
         plt.show()
 
 
-    # generate the augmentation 
-    def generateAugmentation(path, target):
-        dataPath = path
-        savePath = dataPath
-
-        # 🧪 Augmentation settings
-        datagen = ImageDataGenerator(
-            rotation_range=40,
-            zoom_range=0.3,
-            horizontal_flip=True,
-            shear_range=0.3,
-            width_shift_range=0.2,
-            height_shift_range=0.2,
-            brightness_range=[0.5, 1.5],
-            fill_mode='nearest'
-        )
-
-        # 📸 Load all images
-        images = [img for img in os.listdir(dataPath) if img.lower().endswith(('.png', '.jpg', '.jpeg'))]
-        total_images = len(images)
-        
-        # 📊 How many new images per original
-        per_image = math.ceil(target / total_images)
-        generated_total = 0
-
-        for filename in images:
-            img_path = os.path.join(dataPath, filename)
-            img = load_img(img_path, color_mode='grayscale')
-            x = img_to_array(img)
-            x = x.reshape((1,) + x.shape)
-
-            count = 0
-            for batch in datagen.flow(x, batch_size=1, save_to_dir=savePath, save_prefix='aug', save_format='png'):
-                count += 1
-                generated_total += 1
-                if count >= per_image or generated_total >= target:
-                    break
-
-            if generated_total >= target:
-                break
-
-        print(f"✅ Generated new {generated_total} images.")
-
-    
     # Visual Classes Count
     def VisualClassesCount(base_path):
         # 🗂️ Store class names and image counts
@@ -110,5 +73,54 @@ class ImagePrePreprocessingData:
         plt.tight_layout()
         plt.show()
     
-    # Plot settings
-    
+    # Remove the duplicate images, blank, Corrupted image in the main folder 
+
+    def is_blank(img, threshold=5):
+        # Convert to grayscale and check std deviation
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        return np.std(gray) < threshold
+
+    def get_hash(image_path):
+        with open(image_path, 'rb') as f:
+            return hashlib.md5(f.read()).hexdigest()
+
+    def clean_embryo_folder(master_folder):
+        print("🧹 Cleaning started...")
+        image_hashes = set()
+        removed_count = {"blank": 0, "duplicate": 0, "corrupt": 0}
+
+        for root, dirs, files in os.walk(master_folder):
+            for file in files:
+                if file.lower().endswith(('.jpg', '.jpeg', '.png')):
+                    path = os.path.join(root, file)
+
+                    try:
+                        # 🧪 Corrupted check
+                        with Image.open(path) as img:
+                            img.verify()
+
+                        # ✅ Reload with cv2 for other checks
+                        img_cv = cv2.imread(path)
+
+                        # Blank check
+                        if ImagePrePreprocessingData.is_blank(img_cv):
+                            os.remove(path)
+                            removed_count["blank"] += 1
+                            continue
+
+                        # Duplicate check
+                        img_hash = ImagePrePreprocessingData.get_hash(path)
+                        if img_hash in image_hashes:
+                            os.remove(path)
+                            removed_count["duplicate"] += 1
+                            continue
+                        else:
+                            image_hashes.add(img_hash)
+
+                    except (UnidentifiedImageError, OSError):
+                        os.remove(path)
+                        removed_count["corrupt"] += 1
+
+        print(f"\n✅ Done! Removed -> Blank: {removed_count['blank']} | Duplicate: {removed_count['duplicate']} | Corrupted: {removed_count['corrupt']}")
+
+   

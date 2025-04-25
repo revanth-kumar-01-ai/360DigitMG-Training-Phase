@@ -2,7 +2,27 @@ artifacts_root: artifacts
 
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  source_URL: https://drive.google.com/file/d/1N9mJ4KfRU2ceGbcB2zYaGCMTHhwuYSnk/view?usp=sharing
+  source_URL: https://drive.google.com/file/d/1rWB16I4L7ZbnZjbIvG5ftTIYFh-STgXG/view?usp=sharing
   local_data_file: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion
+  masterFolder: artifacts/data_ingestion/Embryo_Master_Folder
   
+data_preprocessing:
+  root_dir: artifacts/preprocessed
+  masterFolder: artifacts/data_ingestion/Embryo_Master_Folder
+  preprocessMasterFolder: artifacts/preprocessed/Embryo_Master_Folder_v1
+  train_data: artifacts/preprocessed/train_data
+  test_data: artifacts/preprocessed/test_data
+
+
+training:
+  root_dir: artifacts/training
+  trained_model_path: artifacts/training/model.pth
+
+
+onnx_model:
+  root_dir: artifacts/onnx_model
+  trained_model: artifacts/training/model.pth
+  onnx_model_path32: artifacts/onnx_model/efficientvit_embryo_fp32.onnx
+  onnx_model_path16: artifacts/onnx_model/efficientvit_embryo_fp16.onnx
+  test_data: artifacts/preprocessed/test_data
