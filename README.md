@@ -24,7 +24,7 @@
 
 ✅ **Economic**: 25% cost reduction  
 
-✅ **Model Accuracy**: 97% – 98%
+✅ **Model Accuracy**: 95% – 98%
 
 ---
 
@@ -66,7 +66,7 @@
 
 ---
 
-# 🔍 Step 4: Exploratory Data Analysis (EDA)
+## 🔍 4: Exploratory Data Analysis (EDA)
 
 ## 📊 Before Data Preprocessing
 
@@ -87,33 +87,34 @@
 
 ---
 
-## 📑 Insights & Final Thoughts
+### 📑 Insights & Final Thoughts
 
 ### 🔢 ✌️ 1: Image Count & Class Distribution
 
-#### 🧫 8-cell Dataset (510 images):  
-- Grade A: 190  
-- Grade B: 179  
+#### 🧫 8-cell Dataset (450 images):  
+- Grade A: 150  
+- Grade B: 150  
 - Grade C: 150  
 - ✅ **Balanced** dataset — future **augmentation** planned.
 
 #### 🧬 Morula Dataset (434 images):  
-- Grade A: 190  
-- Grade B: 179  
+- Grade A: 134  
+- Grade B: 150  
 - Grade C: 150  
 - ✅ **Balanced** — augmentation to be applied later.
 
-#### 🧪 Blastocyst Dataset (450 images):  
-- Grade A: 148  
+#### 🧪 Blastocyst Dataset (452 images):  
+- Grade A: 150  
 - Grade B: 152  
 - Grade C: 150  
 - ✅ Mostly **balanced** — slight difference in class sizes.
+
+#### ❌ Error Images (268 images): 
 
 ---
 
 ### 🎲 ✌️  2: Random Image Visualization
 - Showed **5 random images** per grade (A, B, C)  
-- Also viewed **5 error images** to check for issues 🧐
 
 ---
 
@@ -135,12 +136,9 @@
 
 - ✅ No **missing**, **corrupt**, or **blank** images found — all clear 🎉
 
-
-> 🧠 **Insight**: Datasets are mostly clean and balanced, but image resizing + format unification needed before training 📦🧼
-
 --- 
 
-# ⚙️ Step 5. Data Preprocessing
+## ⚙️ 5. Data Preprocessing
 
 ## ❓ Why Data Preprocessing?
 
@@ -154,38 +152,24 @@ We handle:
 - And other clean-up tasks 🧽  
 
 ---
+## 🧼🖼️ Image Preprocessing Flow:
 
-## 🖼️ Image Preprocessing Steps:
-
-- 📄 **Standard Format**: Convert all to `.jpg`  
-- 🔍 **Resize**: Make image size consistent  
-- 🌈 **Convert to RGB**: Ensure 3-channel color images  
-- 🔁 **Reshape**: Already done ✅  
-- 🎨 **Data Augmentation**: Add variation to improve learning  
-- 🔢 **Convert to Array**: For feeding into the model
-
----
-
-## 🧼 Image Cleaning Process:
-
-### 🗑️ Remove:
-- ❌ Blank images  
-- ❌ Duplicate images  
-- ❌ Corrupted files  
-- 🧹 **Check for duplicates and remove them**  
+- 📄 **Convert to .jpg** format  
+- 🔍 **Resize** images to same size  
+- 🌈 **Convert to RGB** (3-channel)  
+- 🔁 **Reshape** (Already done ✅)  
+- 🎨 **Data Augmentation** to add variety  
+- 🔢 **Convert to array** for model input  
+- 🗑️ **Clean the Data**:
+>- *❌ Remove blank, duplicate, and corrupted images* 
+>- *🧹 Checked and removed duplicates 🧽* 
+- 🧪 **Split the Data**:
+>- 🔀 **Train (90%)** and **Test (10%)**  
+>- 🗂️ *Saved into folders: `train/` & `test/`*
 
 ---
 
-## 🧪 Data Splitting
-
-- 🔀 Split into **Train (90%)** and **Test (10%)** sets  
-- 🗂️ Save images into respective folders: `train/` and `test/`  
-
----
-
-
-
-# 🚀 Step 6: Model Training adn Evaluation accuarcy
+## 🚀 6: Model Training and Evaluation accuarcy
 I used six types of deep learning algorithms 🤖🔥
 
 | 🏷️ Model Name               | 🎯 Train Accuracy | 🧪 Test Accuracy | 🏆 Ranking    |
@@ -209,36 +193,34 @@ I track my model's performance in MLflow, which allows for easy comparison of di
 
 I am deploying the model using a **Streamlit app**. Streamlit provides an easy way to deploy and showcase machine learning models in an interactive and user-friendly web interface.
 
-### To deploy the app:
 
-1. **Install the required libraries**:
-    First, clone the repository to your local machine:
-    ```bash
-    git clone https://github.com/revanth-kumar-01-ai/360DigitMG-Training-Phase.git
-    ```
+### **Process to Get the Code and Run:**
 
-    Then, install all the required libraries from the `requirements.txt` file:
-    ```bash
-    pip install -r requirements.txt
-    ```
+1. **Clone the Repository**:
+   Use this command to get the project code on your system:
+   ```bash
+   git clone https://github.com/revanth-kumar-01-ai/360DigitMG-Training-Phase.git
+   ```
 
-2. **Run the Streamlit app**:
-    After installing the required libraries, run the Streamlit app using the following command:
-    ```bash
-    streamlit run your_app.py
-    ```
+2. **Install Dependencies**:
+   Navigate to the project folder and install the necessary libraries:
+   ```bash
+   cd 360DigitMG-Training-Phase
+   pip install -r requirements.txt
+   ```
 
-3. **Access the app**:
-    Once the app is running, it will be live on your local server and accessible at `http://localhost:8501`.
+3. **Run the Streamlit App**:
+   Once dependencies are installed, start the Streamlit app:
+   ```bash
+   streamlit run your_app.py
+   ```
 
-### Download the Code 📝
+4. **Access the App**:
+   Open your browser and go to `http://localhost:8501` to view the app in action! 🚀
 
-You can download the project code by cloning the repository:
+---
 
 ```bash
-git clone https://github.com/revanth-kumar-01-ai/360DigitMG-Training-Phase.git
-
-
 ## 💻 Code Workflow
 
 1. 🔧 Update `config.yaml`  
@@ -248,8 +230,4 @@ git clone https://github.com/revanth-kumar-01-ai/360DigitMG-Training-Phase.git
 5. 🧩 Update components  
 6. 🧪 Update pipeline  
 7. 🚀 Update `main.py`  
-8. 🌐 Update `app.py`  
-
-
-
-
+8. 🌐 Update `app.py`
