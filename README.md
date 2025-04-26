@@ -189,10 +189,6 @@ I track my model's performance in MLflow, which allows for easy comparison of di
 
 [![Go to MLflow Experiment](https://img.shields.io/badge/Go%20to%20MLflow-Experiment-blue?style=for-the-badge)](https://dagshub.com/revanth-kumar-01-ai/360DigitMG-Training-Phase.mlflow/#/experiments/0?viewStateShareKey=80da10b99d9a7a97b045e3282371ab20a2b0b34bc77056434eaf5bd3b6d771c6&compareRunsMode=TABLE)
 
-## 7. Deployment 🚀 (progress)
-
-I am deploying the model using a **Streamlit app**. Streamlit provides an easy way to deploy and showcase machine learning models in an interactive and user-friendly web interface.
-
 ---
 
 ### 🏆 Champion Model: `efficientvit_b2.r288_in1k`
@@ -213,6 +209,11 @@ I am deploying the model using a **Streamlit app**. Streamlit provides an easy w
 - 🔝 **Include Top**: `False`
 
 ---
+
+## 7. Deployment 🚀 (progress)
+
+I am deploying the model using a **Streamlit app**. Streamlit provides an easy way to deploy and showcase machine learning models in an interactive and user-friendly web interface.
+
 
 ### **Process to Get the Code and Run:**
 
@@ -250,4 +251,8 @@ I am deploying the model using a **Streamlit app**. Streamlit provides an easy w
 5. 🧩 Update components  
 6. 🧪 Update pipeline  
 7. 🚀 Update `main.py`  
-8. 🌐 Update `app.py`
+8. 🌐 Update `app.py`  
+
+
+
+
