@@ -193,6 +193,26 @@ I track my model's performance in MLflow, which allows for easy comparison of di
 
 I am deploying the model using a **Streamlit app**. Streamlit provides an easy way to deploy and showcase machine learning models in an interactive and user-friendly web interface.
 
+---
+
+### 🏆 Champion Model: `efficientvit_b2.r288_in1k`
+
+### 📊 Metrics:
+- ✅ **Train Accuracy**: `0.9926`  
+- 📈 **Test Accuracy**: `0.9572`  
+- 💔 **Loss**: `0.1718`
+
+### ⚙️ Parameters:
+- 🖼️ **Image Size**: `288`  
+- 🔁 **Epochs**: `100`  
+- 📦 **Batch Size**: `32`  
+- 🎯 **Classes**: `10`  
+- 🎛️ **Channels**: `3`  
+- 🧠 **Model Name**: `efficientvit_b2.r288_in1k`  
+- 🪶 **Weights**: `efficientvit_b2.r288_in1k`  
+- 🔝 **Include Top**: `False`
+
+---
 
 ### **Process to Get the Code and Run:**
 
