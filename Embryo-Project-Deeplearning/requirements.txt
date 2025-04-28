@@ -6,18 +6,21 @@ Flask-Cors
 gdown
 joblib
 matplotlib
-mlfow
+mlflow
 notebook
 numpy
 opencv-python
 pandas
 Pillow
 python-box==6.0.2
-pyYAML
+pyyaml
 scipy
 seaborn
 tensorflow==2.10.1
 tqdm
-types-pyYAML
+types-pyyaml
+onnx
+onnxconverter-common
+onnxruntime
 
 -e .
