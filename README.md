@@ -210,10 +210,11 @@ I track my model's performance in MLflow, which allows for easy comparison of di
 
 ---
 
-## 7. Deployment 🚀 (progress)
+## 7. Deployment 🚀
 
-I am deploying the model using a **Streamlit app**. Streamlit provides an easy way to deploy and showcase machine learning models in an interactive and user-friendly web interface.
-
+The app is deployed using **Flask** for the backend and **Next.js** for the frontend.
+**MySQL** handles the database 🗄️, ensuring fast ⚡ and dynamic user experience 💻.
+This setup allows seamless interaction between users and the model 🌐.
 
 ### **Process to Get the Code and Run:**
 
@@ -230,14 +231,22 @@ I am deploying the model using a **Streamlit app**. Streamlit provides an easy w
    pip install -r requirements.txt
    ```
 
-3. **Run the Streamlit App**:
-   Once dependencies are installed, start the Streamlit app:
+3. **Run the Flask Server**:
+   After installing dependencies, start the Flask backend:
+
    ```bash
-   streamlit run your_app.py
+   python app.py
    ```
 
-4. **Access the App**:
-   Open your browser and go to `http://localhost:8501` to view the app in action! 🚀
+4. **Run the Next.js Frontend**:
+   In a separate terminal, start the frontend:
+
+   ```bash
+   npm run dev
+   ```
+
+5. **Access the App**:
+   Open your browser and go to `http://localhost:3000` to see it live! 🚀
 
 ---
 

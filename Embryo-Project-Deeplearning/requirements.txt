@@ -14,6 +14,7 @@ pandas
 Pillow
 python-box==6.0.2
 pyyaml
+python-dotenv
 scipy
 seaborn
 tensorflow==2.10.1
