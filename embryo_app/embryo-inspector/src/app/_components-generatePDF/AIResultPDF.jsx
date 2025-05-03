@@ -11,44 +11,48 @@ import {
 } from "../../../utils/Insights";
 
 export default function AIResultPDF({ details, message, name, date }) {
-  const focusArea = generateFocusAreasDescription([details?.prediction]);
-  const developmentStage = getDevelopmentStage(details?.prediction);
-  const confidenceScore = getConfidenceScoreDescription(details?.probability);
-  const KeyIndicators = getKeyIndicatorsDescription(details?.prediction);
+  // Safe fallback values 🛡️
+  const prediction = typeof details?.prediction === "string" ? details.prediction : "";
+  const probability = typeof details?.probability === "string" ? details.probability : "";
+
+  const focusArea = generateFocusAreasDescription(prediction ? [prediction] : [""]);
+  const developmentStage = getDevelopmentStage(prediction);
+  const confidenceScore = getConfidenceScoreDescription(probability);
+  const KeyIndicators = getKeyIndicatorsDescription(prediction);
 
   return (
     <Document>
       <Page size="A4" style={styles.page}>
         {/* Patient Details */}
         <View style={styles.patientDetails}>
-          <Text style={{ marginBottom: 5 }}>Name: {details?.patient_name}</Text>
-          <Text style={{ marginBottom: 5 }}>Age: {details?.patient_age}</Text>
+          <Text style={{ marginBottom: 5 }}>Name: {details?.patient_name || "N/A"}</Text>
+          <Text style={{ marginBottom: 5 }}>Age: {details?.patient_age || "N/A"}</Text>
           <Text style={{ marginBottom: 5 }}>
-            Blood Group: {details?.patient_blood_group}
+            Blood Group: {details?.patient_blood_group || "N/A"}
           </Text>
         </View>
 
-        {/* Embryo Analysis Result Title */}
+        {/* Title */}
         <View style={styles.title}>
           <Text>Embryo Analysis Result</Text>
         </View>
 
-        {/* Embryo Analysis Grid */}
+        {/* Result Grid */}
         <View style={styles.grid}>
-          {/* First Card */}
+          {/* Grad Card */}
           <View style={styles.card}>
             <Text style={styles.cardTitle}>Grad</Text>
-            <Text style={styles.cardContent}>{details?.prediction}</Text>
+            <Text style={styles.cardContent}>{prediction}</Text>
             <Text style={styles.cardContent}>
-              {getEmbryoQuality(details?.prediction || "")}
+              {getEmbryoQuality(prediction)}
             </Text>
           </View>
 
-          {/* Second Card */}
+          {/* Success Rate */}
           <View style={styles.card}>
             <Text style={styles.cardTitle}>Success Rate</Text>
             <Text style={styles.cardContent}>
-              {details?.probability?.slice(0, 5)}%
+              {probability.slice(0, 5)}%
             </Text>
             <Text style={styles.cardContent}>Based on historical data</Text>
           </View>
@@ -59,66 +63,72 @@ export default function AIResultPDF({ details, message, name, date }) {
           <Text>Visual Analysis</Text>
         </View>
 
-        {/* Grid for Images */}
+        {/* Images Grid */}
         <View style={styles.grid}>
-          {/* First Card - Original Image Embryo */}
+          {/* Original Image */}
           <View style={styles.card}>
             <Text style={styles.cardTitle}>Original Image Embryo</Text>
-            <Image style={styles.image} src={details?.image_path} />
+            {details?.image_path ? (
+              <Image style={styles.image} src={details.image_path} />
+            ) : (
+              <Text>No image</Text>
+            )}
           </View>
 
-          {/* Second Card - Explainable AI */}
+          {/* Explainable AI Image */}
           <View style={styles.card}>
             <Text style={styles.cardTitle}>Explainable AI</Text>
-            <Image style={styles.image} src={details?.XAImage} />
+            {details?.XAImage ? (
+              <Image style={styles.image} src={details.XAImage} />
+            ) : (
+              <Text>No XA image</Text>
+            )}
           </View>
         </View>
 
-        {/* AI Analysis Insights Title */}
+        {/* AI Insights Title */}
         <View style={styles.aiAnalysisTitle}>
           <Text>AI Analysis Insights</Text>
         </View>
 
-        {/* AI Analysis Grid */}
+        {/* Insights Grid 1 */}
         <View style={styles.aiGrid}>
-          {/* First Card - Focus Areas */}
           <View style={styles.aiCard}>
             <Text style={styles.cardTitle}>Focus Areas</Text>
-            <Text style={styles.cardContent}>{focusArea || ""}</Text>
+            <Text style={styles.cardContent}>{focusArea}</Text>
           </View>
 
-          {/* Second Card - Confidence Score */}
           <View style={styles.aiCard}>
             <Text style={styles.cardTitle}>Confidence Score</Text>
-            <Text style={styles.cardContent}>{confidenceScore || ""}</Text>
+            <Text style={styles.cardContent}>{confidenceScore}</Text>
           </View>
         </View>
 
+        {/* Insights Grid 2 */}
         <View style={styles.aiGrid}>
-          {/* Third Card - Development Stage */}
           <View style={styles.aiCard}>
             <Text style={styles.cardTitle}>Development Stage</Text>
-            <Text style={styles.cardContent}>{developmentStage || ""}</Text>
+            <Text style={styles.cardContent}>{developmentStage}</Text>
           </View>
 
-          {/* Fourth Card - Key Indicators */}
           <View style={styles.aiCard}>
             <Text style={styles.cardTitle}>Key Indicators</Text>
-            <Text style={styles.cardContent}>{KeyIndicators || ""}</Text>
+            <Text style={styles.cardContent}>{KeyIndicators}</Text>
           </View>
         </View>
 
+        {/* Doctor's Description */}
         <View style={styles.Description}>
           <Text>Doctor Description</Text>
         </View>
-        {/* Doctor's Description */}
         <View style={styles.doctorDescription}>
-          <Text>{message || ""}</Text>
+          <Text>{message || "No message provided."}</Text>
         </View>
 
+        {/* Footer */}
         <View style={styles.dateText}>
-          <Text style={{ marginBottom: 5 }}>Doctor: {name || ""}</Text>
-          <Text>Date: {date || ""}</Text>
+          <Text style={{ marginBottom: 5 }}>Doctor: {name || "N/A"}</Text>
+          <Text>Date: {date || "N/A"}</Text>
         </View>
       </Page>
     </Document>
